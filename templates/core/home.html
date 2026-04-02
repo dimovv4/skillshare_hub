@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<div class="container text-center py-5">
+    <h1 class="fw-bold mb-3">Welcome to SkillShare Hub</h1>
+    <p class="text-light mb-4">
+        A platform where instructors create courses and students learn new skills.
+    </p>
+
+    <a href="/courses/" class="btn btn-primary btn-lg px-4">Browse Courses</a>
+</div>
+
+<!-- FEATURED COURSES -->
+<div class="container pb-5">
+    <div class="row g-4 justify-content-center">
+
+        {% for course in courses %}
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="fw-bold">{{ course.title }}</h5>
+                    <p class="text-light">{{ course.description|truncatewords:15 }}</p>
+                    <a href="{{ course.get_absolute_url }}" class="btn btn-outline-primary w-100 rounded-pill">
+                        View
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

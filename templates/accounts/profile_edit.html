@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Edit profile{% endblock %}
+{% block content %}
+<h1>Edit profile</h1>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="mb-3">
+    {{ form.username.label_tag }} {{ form.username }}
+  </div>
+  <div class="mb-3">
+    {{ form.email.label_tag }} {{ form.email }}
+  </div>
+  {% for field in form %}
+    {% if field.name not in "username email" %}
+      <div class="mb-3">
+        {{ field.label_tag }} {{ field }}
+        {{ field.errors }}
+      </div>
+    {% endif %}
+  {% endfor %}
+  <button type="submit" class="btn btn-success">Save</button>
+</form>
+{% endblock %}

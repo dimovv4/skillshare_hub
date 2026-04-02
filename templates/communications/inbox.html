@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Inbox{% endblock %}
+{% block content %}
+<h1>Inbox</h1>
+<a href="{% url 'communications:message_create' %}" class="btn btn-primary mb-3">New message</a>
+<ul>
+  {% for msg in messages %}
+    <li>
+      <a href="{% url 'communications:message_detail' msg.pk %}">
+        {% if not msg.is_read %}<strong>{% endif %}
+        {{ msg.subject }} from {{ msg.sender.username }} ({{ msg.created_at }})
+        {% if not msg.is_read %}</strong>{% endif %}
+      </a>
+    </li>
+  {% empty %}
+    <li>No messages.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

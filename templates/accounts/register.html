@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="auth-card">
+
+        <h2 class="auth-title text-light">Create an account</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="mb-3">
+                    <label class="form-label text-light fw-semibold">{{ field.label }}</label>
+                    {{ field }}
+                    <div class="text-danger small">{{ field.errors }}</div>
+                </div>
+            {% endfor %}
+
+            <button class="btn btn-primary auth-btn">Register</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
