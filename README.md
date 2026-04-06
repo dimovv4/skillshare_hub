@@ -37,7 +37,7 @@ This project includes user authentication, course management, enrollments, dashb
 ## ⚙️ Installation
 
 ### 1. Clone the repository
-git clone https://github.com/yourusername/skillsharehub.git
+git clone https://github.com/dimovv4/skillsharehub.git
 cd skillsharehub
 
 ### 2. Create a virtual environment
